@@ -1,13 +1,13 @@
 // OpenSCAD code for the Modern Gridfinity Case bracket for Skadis
 
 // --- Global Parameters ---
-base_width = 22;     // X-axis dimension (also width of the L-bracket extrusion)
+base_width = 30;     // X-axis dimension (also width of the L-bracket extrusion)
 base_height = 3;     // Z-axis dimension (thickness of the base segment)
 
 // Parameters for the L-shaped brackets
 bracket_thickness = 2;        // Thickness of the L-bracket's wall (material thickness)
 vertical_arm_height = 55;     // Height of the vertical arm of the L-bracket (from the base_height upwards)
-horizontal_arm_length = 25;    // Length of the horizontal lip of the L-bracket (extending outwards)
+horizontal_arm_length = 20;    // Length of the horizontal lip of the L-bracket (extending outwards)
 chamfer_offset = 6.3;           // The offset distance for the 45-degree inner chamfer from the sharp inner corner
 
 // Parameters for the optional top arm (only for the last bracket)
@@ -40,7 +40,7 @@ module l_bracket_component(is_last_bracket = false) {
 
         // Conditionally add the top arm if this is the last bracket
         if (is_last_bracket) {
-            translate([0, vertical_arm_height - bracket_thickness + top_arm_thickness, 0]) {
+            translate([0, vertical_arm_height - bracket_thickness/2 + top_arm_thickness, 0]) {
                 cube(size = [l_bracket_x_footprint, bracket_thickness, base_width]);
             }
         }
@@ -50,7 +50,7 @@ module l_bracket_component(is_last_bracket = false) {
 module single_bracket_assembly_unit(is_last_bracket = false) {
     union() {
         // 1. Create the "back wall" segment of the base.
-        cube(size = [l_bracket_x_footprint, l_bracket_y_footprint+bracket_thickness/2, base_height]);
+        cube(size = [l_bracket_x_footprint, l_bracket_y_footprint+bracket_thickness, base_height]);
 
         // 2. Place the L-bracket component directly on top of this base segment.
         translate([0, 0, base_height]) {
