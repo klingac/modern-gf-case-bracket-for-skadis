@@ -6,7 +6,7 @@ base_height = 3;     // Z-axis dimension (thickness of the base segment)
 
 // Parameters for the L-shaped brackets
 bracket_thickness = 2;        // Thickness of the L-bracket's wall (material thickness)
-vertical_arm_height = 55;     // Height of the vertical arm of the L-bracket (from the base_height upwards)
+vertical_arm_height = 55.5;     // Height of the vertical arm of the L-bracket (from the base_height upwards)
 horizontal_arm_length = 20;    // Length of the horizontal lip of the L-bracket (extending outwards)
 chamfer_offset = 6.3;           // The offset distance for the 45-degree inner chamfer from the sharp inner corner
 
